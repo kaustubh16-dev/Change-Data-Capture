@@ -13,5 +13,6 @@ Change data capture = In simple words, if we load all the data from rdbms like m
 
 Step by step process:
 1. Create an RDS instant. [RDS](https://github.com/kaustubh16-dev/Change-Data-Capture/blob/main/Steps/1Rds_instance.md)
+2. Create a S3 bucket.
 
     
