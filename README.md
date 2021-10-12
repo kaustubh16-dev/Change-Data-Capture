@@ -45,7 +45,7 @@ Change data capture = In simple words, if we load all the data from rdbms like m
       * Open -> Create a new connection 
       * Provide a name, hostname: endpoint, port: 3306, provide username and password
       * Test the connection.
-      * *In case your connection failed, go to EC2 dashboard, click on security group, then inbound rule -> add -> custom TCP, port 3306, 0.0.0.0/0 and click on save.*
+      * _In case your connection failed, go to EC2 dashboard, click on security group, then inbound rule -> add -> custom TCP, port 3306, 0.0.0.0/0 and click on save._
 
 #### 5. Schema design [Link](https://github.com/kaustubh16-dev/Change-Data-Capture/tree/main/Images_and_Code/05.Schema%20design)
       * Create a schema and data in a file.
@@ -62,7 +62,7 @@ Change data capture = In simple words, if we load all the data from rdbms like m
       * Try using some updation, deletion, insertion operation in mysql and see it automatically reflecting in your s3 bucket. It will also create a new file to show what we have changed.
       * *Before continuing stop the rds and dms instance.*
       
-#### 8. Create a lambda function: [Link](https://github.com/kaustubh16-dev/Change-Data-Capture/tree/main/Images_and_Code/08.Create%20a%20lambda%20function)
+#### 8. Create a lambda function: [Link](https://github.com/kaustubh16-dev/Change-Data-Capture/tree/main/Images_and_Code/08.Create%20a%20lambda%20function) [code](https://github.com/kaustubh16-dev/Change-Data-Capture/blob/main/Images_and_Code/08.Create%20a%20lambda%20function/lambda_function.py)
       * Create IAM role: S3fullaccess, gluefullaccess, cloudwatch full access.
       * Add trigger -> s3 -> bucketname
       * Here we cannot directly add destination, we have to create a seperate glue job then invoke it.
@@ -77,7 +77,7 @@ Change data capture = In simple words, if we load all the data from rdbms like m
       * Write a spark code using boto3 library.
       * Upload any file to s3 and see whether we are gettng two cloudwatch, one for lambda and one for glue.
       
-#### 11. Writing a glue shell job: [Link](https://github.com/kaustubh16-dev/Change-Data-Capture/tree/main/Images_and_Code/11.Writing%20a%20glue%20shell%20job)
+#### 11. Writing a glue shell job: [Link](https://github.com/kaustubh16-dev/Change-Data-Capture/tree/main/Images_and_Code/11.Writing%20a%20glue%20shell%20job) [code](https://github.com/kaustubh16-dev/Change-Data-Capture/blob/main/Images_and_Code/11.Writing%20a%20glue%20shell%20job/Glue.py)
       * Write the spark code for the CDC i.e insert, update and delete.
       * Create a S3 bucket for output.
 
