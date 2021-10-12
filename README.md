@@ -12,29 +12,31 @@ Change data capture = In simple words, if we load all the data from rdbms like m
 1. Take all those changes from the database, develop a pipeline which will consider  all the changes.
 
 ## Step by step process:
-### 1. Create an RDS instant.
+#### 1. Create an RDS instant.
     * Select a database e.g MySql db, select freetier facility, disable auto scaling and automonitoring etc. 
     * DB parameter group could be default MySql group
     * Enable the backup option
     * Create a new paramter group and use it here.
    
-### 1. Create a S3 bucket.
+#### 1. Create a S3 bucket.
      * It should have a unique name.
      * You can disable the public access.
      * Acknowledge and create.
 
 
-### 1. Creating source and destination endpoint as well as replication instance 
-    * Creating a source endpoint:
-        *  DMS - endpoint - source endpoint
-        * select RDS DB instance - name of the instance
-        * provide access info manually
-        * Test it with the replication instance
-        * Change database-1 name to anything you like
-        * At last create.
-        
-   * Creating a destination endpoint:
-        * Similar procedure as source endpoint.
-        
-   * Creating a Replication instance:
-    
+#### 1. Creating source and destination endpoint as well as replication instance 
+      * Creating a source endpoint:
+         *  DMS - endpoint - source endpoint
+         * select RDS DB instance - name of the instance
+         * provide access info manually
+         * Test it with the replication instance
+         * Change database-1 name to anything you like
+         * At last create.
+
+      * Creating a destination endpoint:
+         * Similar procedure as source endpoint.
+         * Only change is to create an IAM role -> Give s3 full aceess to that IAM role and provide arn in the endpoint.
+
+      * Creating a Replication instance:
+         * Select t2.micro (comes under free tier), 50 GB, single AZ and create.
+
