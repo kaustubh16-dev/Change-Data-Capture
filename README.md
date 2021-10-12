@@ -75,5 +75,17 @@ Change data capture = In simple words, if we load all the data from rdbms like m
 #### 10. Adding invoke for glue job.
       * We can't directly add destination of glue job.
       * Write a spark code using boto3 library.
-      * Upload any file to s3 and see whether we are gettng two cloudwatch, one for lambda and one for glue 
+      * Upload any file to s3 and see whether we are gettng two cloudwatch, one for lambda and one for glue.
+      
+#### 11. Writing a glue shell job:
+      * Write the spark code for the CDC i.e insert, update and delete.
+      * Create a S3 bucket for output.
+
+#### 12. Full load pipeline:
+      * Prerequisite: Delete everything from s3.
+      * Start RDS and MDS instances.
+      * Rds will invoke mysql and load the file into s3, MDS invoke the lambda function, it will invoke the glue job and we will get the output file in S3.
+      * While starting the MDS make sure to restart not resume.
+      * Change the data in the mysql database and see if you can get the new output file with the respective changes in S3.
+      
 
