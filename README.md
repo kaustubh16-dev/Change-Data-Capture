@@ -18,13 +18,13 @@ Change data capture = In simple words, if we load all the data from rdbms like m
     * Enable the backup option
     * Create a new paramter group and use it here.
    
-#### 1. Create a S3 bucket.
+#### 2. Create a S3 bucket.
      * It should have a unique name.
      * You can disable the public access.
      * Acknowledge and create.
 
 
-#### 1. Creating source and destination endpoint as well as replication instance 
+#### 3. Creating source and destination endpoint as well as replication instance 
       * Creating a source endpoint:
          *  DMS - endpoint - source endpoint
          * select RDS DB instance - name of the instance
@@ -39,4 +39,41 @@ Change data capture = In simple words, if we load all the data from rdbms like m
 
       * Creating a Replication instance:
          * Select t2.micro (comes under free tier), 50 GB, single AZ and create.
+
+#### 4. Connect AWS with MySql DB:
+      * Download mysql workbench.
+      * Open -> Create a new connection 
+      * Provide a name, hostname: endpoint, port: 3306, provide username and password
+      * Test the connection.
+      * *In case your connection failed, go to EC2 dashboard, click on security group, then inbound rule -> add -> custom TCP, port 3306, 0.0.0.0/0 and click on save.*
+
+#### 5. Schema design
+      * Create a schema and data in a file.
+      * Don't forget to add a primary key otherwise it might give us error while changing the data
+
+#### 6. Create Data Migration task:
+      * Create data migration task under DMS.
+      * Provide name, replication instance, source and destination endpoint
+      * Migration type will be *"Migrate existing and replicate ongoing changes."* This is important otherwise it will not replicate the new changes.
+      * Add new section rulw: Provide schema name, table name, use "*" so that it will take all schemas or tables.
+      * After creating this successfully, it will automatically load all the data from mysql to s3.
+
+#### 7. DMS replication ongoing:
+      * Try using some updation, deletion, insertion operation in mysql and see it automatically reflecting in your s3 bucket. It will also create a new file to show what we have changed.
+      * *Before continuing stop the rds and dms instance.*
+      
+#### 8. Create a lambda function:
+      * Create IAM role: S3fullaccess, gluefullaccess, cloudwatch full access.
+      * Add trigger -> s3 -> bucketname
+      * Here we cannot directly add destination, we have to create a seperate glue job then invoke it.
+      * Check lambda function by deploying any code ("Hello World"). and check on cloudwatch -> log groups.
+      
+#### 9. Creating a glue job
+      * Create an IAM role: s3fullaccess, cludwatchfullaccess
+      * Go to glue -> add job -> spark 2.4
+      
+#### 10. Adding invoke for glue job.
+      * We can't directly add destination of glue job.
+      * Write a spark code using boto3 library.
+      * Upload any file to s3 and see whether we are gettng two cloudwatch, one for lambda and one for glue 
 
