@@ -15,3 +15,11 @@
 ![23](https://github.com/kaustubh16-dev/Change-Data-Capture/blob/main/Steps/RDS_instance_images/23.png)
 ![24](https://github.com/kaustubh16-dev/Change-Data-Capture/blob/main/Steps/RDS_instance_images/24.png)
 ![25](https://github.com/kaustubh16-dev/Change-Data-Capture/blob/main/Steps/RDS_instance_images/25.png)
+
+
+
+## Creating a destination endpoint
+![26](https://github.com/kaustubh16-dev/Change-Data-Capture/blob/main/Steps/RDS_instance_images/26.png)
+![27](https://github.com/kaustubh16-dev/Change-Data-Capture/blob/main/Steps/RDS_instance_images/27.png)
+![28](https://github.com/kaustubh16-dev/Change-Data-Capture/blob/main/Steps/RDS_instance_images/28.png)
+![29](https://github.com/kaustubh16-dev/Change-Data-Capture/blob/main/Steps/RDS_instance_images/29.png)
