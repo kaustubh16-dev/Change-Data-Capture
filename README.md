@@ -11,9 +11,30 @@ Change data capture = In simple words, if we load all the data from rdbms like m
 1. If there is any change in the data i.e. insertion, updation and deletion 
 1. Take all those changes from the database, develop a pipeline which will consider  all the changes.
 
-Step by step process:
-1. Create an RDS instant. [RDS](https://github.com/kaustubh16-dev/Change-Data-Capture/blob/main/Steps/1Rds_instance.md)
-2. Create a S3 bucket. [S3](https://github.com/kaustubh16-dev/Change-Data-Capture/blob/main/Steps/02_S3_Bucket.md)
-3. Creating source and destination endpoint as well as replication instance [endpoint](https://github.com/kaustubh16-dev/Change-Data-Capture/blob/main/Steps/03_Source_endpoint_dest_endpoint.md)
+## Step by step process:
+### 1. Create an RDS instant.
+    * Select a database e.g MySql db, select freetier facility, disable auto scaling and automonitoring etc. 
+    * DB parameter group could be default MySql group
+    * Enable the backup option
+    * Create a new paramter group and use it here.
+   
+### 1. Create a S3 bucket.
+     * It should have a unique name.
+     * You can disable the public access.
+     * Acknowledge and create.
 
+
+### 1. Creating source and destination endpoint as well as replication instance 
+    * Creating a source endpoint:
+        *  DMS - endpoint - source endpoint
+        * select RDS DB instance - name of the instance
+        * provide access info manually
+        * Test it with the replication instance
+        * Change database-1 name to anything you like
+        * At last create.
+        
+   * Creating a destination endpoint:
+        * Similar procedure as source endpoint.
+        
+   * Creating a Replication instance:
     
